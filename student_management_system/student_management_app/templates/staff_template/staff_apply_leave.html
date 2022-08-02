@@ -1,0 +1,59 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+
+{% block main_content %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">{{page_title}}</h3>
+                    </div>
+
+                    {% include "main_app/form_template.html" with messages=messages  form=form button_text="Apply For Leave"%}
+                </div>
+                <!-- /.card -->
+<div class="card card-primary">
+    <div class="card-header"><h3 class="card-title">{{page_title}}</h3>
+   <div class="table">
+
+       <table class="table table-bordered">
+           <tr>
+               <th>ID</th>
+               <th>Leave Date</th>
+               <th>Leave Message</th>
+            <th>Leave Status</th>
+        </tr>
+        {% for row in leave_data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{leave.leave_date}}</td>
+              <td>{{leave.leave_message}}</td>
+              <td>
+                  
+                  {% if row.leave_status == 0 %}
+                  <span class="badge badge-warning">Pending</span>
+                  {% elif row.leave_status == 1 %}
+                  <span class="badge badge-success">Accepted</span>
+                  
+                    {% else %}
+                    <span class="badge badge-danger">Rejected</span>
+                    
+                    {% endif %}
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock main_content %}
