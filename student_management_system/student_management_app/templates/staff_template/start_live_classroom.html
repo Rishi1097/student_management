@@ -1,23 +1,23 @@
-{% extends 'student_template/base_template.html' %}
+{% extends 'staff_template/base_template.html' %}
 {% block page_title %}
-View Attendance Data
+Live Class Room
 {% endblock page_title %}
 {% block main_content %}
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-                    <div class="row">
+          <div class="row">
               <div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">View Attendance</h3>
+                <h3 class="card-title">Start Live Class Room</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-             <form action="{% url 'student_view_attendance_post' %}" method="post">
+              <form role="form" action="{% url 'start_live_classroom_process' %}" method="post">
+                  {% csrf_token %}
                 <div class="card-body">
-                    {% csrf_token %}
                    <div class="form-group">
                     <label>Subject </label>
                     <select class="form-control" name="subject" id="subject">
@@ -26,19 +26,13 @@ View Attendance Data
                         {% endfor %}
                     </select>
                   </div>
-                  <div class="row">
-                  <div class="col-lg-6">
                   <div class="form-group">
-                    <label>Start Date</label>
-                    <input type="date" name="start_date" class="form-control" placeholder="Start Date">
-                  </div>
-                  </div>
-                  <div class="col-lg-6">
-                  <div class="form-group">
-                    <label>End Date</label>
-                    <input type="date" name="end_date" class="form-control" placeholder="End Date">
-                  </div>
-                  </div>
+                    <label>Session Year</label>
+                    <select class="form-control" name="session_year" id="session_year">
+                        {% for session_year in session_years %}
+                          <option value="{{ session_year.id }}">{{ session_year.session_start_year }} TO {{ session_year.session_end_year }}</option>
+                        {% endfor %}
+                    </select>
                   </div>
                    <div class="form-group">
                       {% if messages %}
@@ -53,17 +47,14 @@ View Attendance Data
                       {% endif %}
                     </div>
 
+                </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary btn-block" id="fetch_student">Fetch Attendance</button>
+                  <button type="submit" class="btn btn-primary btn-block">Start Class</button>
                 </div>
-
-                <div id="student_data" class="card-footer">
-
-                </div>
+              </form>
             </div>
-             </form>
             <!-- /.card -->
 
 
@@ -74,3 +65,4 @@ View Attendance Data
     </section>
     <!-- /.content -->
 {% endblock main_content %}
+
