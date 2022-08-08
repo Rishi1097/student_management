@@ -28,14 +28,15 @@ urlpatterns = [
     path('signup_admin',views.signup_admin,name="signup_admin"),
     path('signup_student',views.signup_student,name="signup_student"),
     path('signup_staff',views.signup_staff,name="signup_staff"),
-    path('do_admin_signup',views.do_admin_signup,name="do_admin_signup"),
-    path('do_staff_signup',views.do_staff_signup,name="do_staff_signup"),
-    path('do_signup_student',views.do_signup_student,name="do_signup_student"),
+    # path('do_admin_signup',views.do_admin_signup,name="do_admin_signup"),
+    # path('do_staff_signup',views.do_staff_signup,name="do_staff_signup"),
+    # path('do_signup_student',views.do_signup_student,name="do_signup_student"),
     path('admin/', admin.site.urls),
     path('accounts/',include('django.contrib.auth.urls')),
     path('',views.ShowLoginPage,name="show_login"),
     path('get_user_details', views.GetUserDetails),
     path('logout_user', views.logout_user,name="logout"),
+    path('password_reset', views.PasswordReset,name="password"),
     path('doLogin',views.doLogin,name="do_login"),
     path('admin_home',HodViews.admin_home,name="admin_home"),
     path('add_staff',HodViews.add_staff,name="add_staff"),
@@ -103,6 +104,8 @@ urlpatterns = [
     path('save_student_result', StaffViews.save_student_result, name="save_student_result"),
     path('edit_student_result',EditResultViewClass.as_view(), name="edit_student_result"),
     path('fetch_result_student',StaffViews.fetch_result_student, name="fetch_result_student"),
+    # path('start_live_classroom',StaffViews.start_live_classroom, name="start_live_classroom"),
+    # path('jlive_class_room_start/<int:subject_id>/<int:session_year_id>',StaffViews.start_live_classroom_process,name="live_class_room_start"),
 
 
 
@@ -119,7 +122,7 @@ urlpatterns = [
     path('firebase-messaging-sw.js',views.showFirebaseJS,name="show_firebase_js"),
     path('student_all_notification',StudentViews.student_all_notification,name="student_all_notification"),
     path('student_view_result',StudentViews.student_view_result,name="student_view_result"),
-    path('join_class_room/<int:subject_id>/<int:session_year_id>',StudentViews.join_class_room,name="join_class_room"),
+    # path('join_class_room/<int:subject_id>/<int:session_year_id>',StudentViews.join_class_room,name="join_class_room"),
     path('node_modules/canvas-designer/widget.html',StaffViews.returnHtmlWidget,name="returnHtmlWidget"),
     path('testurl/',views.Testurl)
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

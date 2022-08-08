@@ -139,17 +139,17 @@ AUTH_USER_MODEL="student_management_app.CustomUser"
 AUTHENTICATION_BACKENDS=['student_management_app.EmailBackEnd.EmailBackEnd']
 
 
-# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-# EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_mails")
-#
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_mails")
 
-EMAIL_HOST_USER =  os.environ.get('rpoudyal716@gmail.com')
-EMAIL_HOST_PASSWORD =  os.environ.get('eiagu@pass123')
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "Student Management System <rpoudyal716@gmail.com>"
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_PAGE_DOMAIN = 'https://127.0.1:8000/'
+# EMAIL_HOST_USER =  os.environ.get('admin@gmail.com')
+# EMAIL_HOST_PASSWORD =  os.environ.get('adminjhh')
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = "Student Management System <admin@gmail.com>"
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #

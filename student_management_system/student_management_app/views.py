@@ -18,6 +18,9 @@ from student_management_system import settings
 def showDemoPage(request):
     return render(request,"demo.html")
 
+def PasswordReset(request):
+    return render(request, 'registration/password_reset_form.html')
+
 def ShowLoginPage(request):
     return render(request,"login_page.html")
 
